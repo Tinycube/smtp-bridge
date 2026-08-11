@@ -125,9 +125,7 @@ const server = new SMTPServer({
   authOptional: true,
   disabledCommands: ['STARTTLS'],
   allowInsecureAuth: true,
-  logger: true,
   onAuth(auth, session, callback) {
-    console.log('🔑 AUTH attempt:', JSON.stringify(auth));
     callback(null, { user: auth.username || 'ghost' });
   },
   onData(stream, session, callback) {
