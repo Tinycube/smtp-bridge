@@ -123,6 +123,13 @@ const server = new SMTPServer({
   secure: false,
   authOptional: true,
   disabledCommands: ['STARTTLS'],
+  const server = new SMTPServer({
+  secure: false,
+  authOptional: true,
+  disabledCommands: ['STARTTLS'],
+  onAuth(auth, session, callback) {
+    callback(null, { user: auth.username || 'ghost' });
+  },
   onData(stream, session, callback) {
     simpleParser(stream, {}, async (err, parsed) => {
       if (err) {
