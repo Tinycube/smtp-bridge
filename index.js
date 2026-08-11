@@ -155,8 +155,7 @@ const server = new SMTPServer({
     });
   }
 });
-
-server.listen(PORT, () => {
+server.listen(PORT, '::', () => {
   console.log(`📬 SMTP relay listening on port ${PORT}`);
   console.log(`   Provider: ${PROVIDER}`);
 });
