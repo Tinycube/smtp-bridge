@@ -119,14 +119,12 @@ for (const key of provider.required) {
 }
 
 // SMTP server
+
 const server = new SMTPServer({
   secure: false,
   authOptional: true,
   disabledCommands: ['STARTTLS'],
-  const server = new SMTPServer({
-  secure: false,
-  authOptional: true,
-  disabledCommands: ['STARTTLS'],
+  allowInsecureAuth: true,
   onAuth(auth, session, callback) {
     callback(null, { user: auth.username || 'ghost' });
   },
